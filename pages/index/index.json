@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "洪大服饰",
+    "usingComponents": {
+        "authorize-component": "/components/authorize/authorize-component"
+    }
+}

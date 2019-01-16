@@ -1,0 +1,38 @@
+<authorize-component>
+    <view class="loading-wrap {{show ? 'show' : ''}}">
+        <view class="loading-bg {{show ? 'show' : ''}}"></view>
+        <view class="loading-content {{show ? 'show' : ''}}">
+            <view class="page-wrap">
+                <view class="auth-wrap">
+                    <view class="top-logo">
+                        <image class="logo" src="{{appPhotoPath}}logo.png" />
+                    </view>
+                    <view class="content-wrap">
+                        <view class="text-center">
+                            <image class="inline-block middle" src="{{appPhotoPath}}icon-wx.png" 
+                            style="width:80rpx;height:65rpx;"/>
+                            <image class="inline-block middle" src="{{appPhotoPath}}icon-trans.png" 
+                            style="width:44rpx;height:43rpx;margin-left:60rpx;" />
+                            <image class="inline-block middle" src="{{appPhotoPath}}icon-xcx.png" 
+                            style="width:68rpx;height:68rpx;margin-left:60rpx;" />
+                        </view>
+                        <view class="dl">
+                            <view class="dt">需要您的授权才能正常使用哦！</view>
+                            <view class="dd">• 请允许我们获取您的公开资讯</view>
+                            <view class="dd">• 包括您的微信头像和昵称</view>
+                            <view class="dd">• 授权是为了向您提供更好的服务</view>
+                        </view>
+                        <view class="button-wrap">
+                            <button class="button" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">授权使用</button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="page-bg">
+                <view class="color-bg">
+                    
+                </view>
+            </view>
+        </view>
+    </view>
+</authorize-component>

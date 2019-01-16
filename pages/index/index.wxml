@@ -1,0 +1,118 @@
+<import src="../../utils/wxParse/wxParse.wxml"/>
+<authorize-component show="{{showAuthorize}}" app-photo-path="{{appPhotoPath}}" bind:getuserinfo="handleGetAuthInfo"/>
+
+
+<view class="top-title-bar {{titleBar.fixed ? 'fixed' : ''}}" style="background:url({{appPhotoPath}}icon-8.png) top center no-repeat;background-size:100% auto;">
+    <view class="title-content">
+        <view class="title-text">{{title}}</view>
+    </view>
+</view>
+<view class="tab-wrap {{tabInfo.fixed ? 'fixed' : ''}}" wx:if="{{tabInfo.fixed}}">
+    <view class="tab-list">
+        <scroll-view scroll-x style="height: 96rpx;white-space:nowrap;border-bottom: 1rpx solid #ffffff;padding: 0 24rpx;">
+            <view wx:for="{{tabData}}" wx:key class="tab-item {{tabInfo.currentTab == index ? 'active' : ''}}" id="{{'nav-' + index}}" bindtap="handleTabClick" data-key="{{index}}" data-id="{{'nav-' + index}}">
+                <view class="text">{{item.name}}</view>
+            </view>
+        </scroll-view>
+        <view class="bottom-border" style="left: {{tabInfo.border.left}}px; width:{{tabInfo.border.width}}px;"></view>
+    </view>
+</view>
+
+<view class="page-container {{titleBar.fixed ? 'fixed' : ''}}">
+    <view class="banner-wrap">
+        <scroll-view scroll-x style="height: 333rpx;white-space:nowrap;text-align:center;">
+            <view class="banner-item" wx:for="{{bannerData.images}}" wx:key data-index="{{index}}" data-url="{{appPhotoPath + item.dialogUrl}}">
+                <image src="{{appPhotoPath ? appPhotoPath + item.url : ''}}" class="image" mode="aspectFill"/>
+            </view>
+        </scroll-view>
+    </view>
+
+    <view class="card-wrap">
+        <view class="card-title-wrap">
+            <view class="card-title textover" style="background-image: url({{appPhotoPath}}icon-9.png), url({{appPhotoPath}}icon-10.png);background-position:left center,right center;background-repeat:no-repeat,no-repeat;background-size:100rpx 70rpx, 100rpx 70rpx;">
+                <view class="card-title-text">{{shopInfo.name}}</view>
+            </view>
+            <view>
+                <text class="card-label">{{shopInfo.label}}</text>
+            </view>
+        </view>
+        <view class="cross-image">
+            <image class="image" src="{{appPhotoPath}}yf/kz-2.jpg" mode="aspectFill"/>
+            <image class="logo" src="{{appPhotoPath + 'yf/' + shopInfo.logoUrl}}" mode="aspectFill"/>
+        </view>
+        <view class="card-item" bindtap="bindPhoneCall" data-num="{{shopInfo.mobile}}">
+            <image src="{{appPhotoPath ? appPhotoPath + 'icon-2.png' : ''}}" class="image" mode="aspectFill"/>
+            <text class="text textover">电话：{{shopInfo.mobile}}</text>
+        </view>
+        <view class="card-item" bindtap="bindNavigate">
+            <image src="{{appPhotoPath ? appPhotoPath + 'icon-4.png' : ''}}" class="image" mode="aspectFill"/>
+            <text class="text">{{shopInfo.address}}</text>
+            <image src="{{appPhotoPath ? appPhotoPath + 'icon-3.png' : ''}}" class="image-local" mode="aspectFill"/>
+        </view>
+    </view>
+
+    <view class="tab-wrap" id="tab-wrap">
+        <view class="tab-list">
+            <scroll-view scroll-x style="height: 96rpx;white-space:nowrap;border-bottom: 1rpx solid #ffffff;padding: 0 24rpx;">
+                <view wx:for="{{tabData}}" wx:key class="tab-item {{tabInfo.currentTab == index ? 'active' : ''}}" id="{{'nav-' + index}}" bindtap="handleTabClick" data-key="{{index}}" data-id="{{'nav-' + index}}">
+                    <view class="text">{{item.name}}</view>
+                </view>
+            </scroll-view>
+            <view class="bottom-border" style="left: {{tabInfo.border.left}}px; width:{{tabInfo.border.width}}px;"></view>
+        </view>
+    </view>
+
+    <view class="data-list" wx:for="{{tabData}}" wx:key id="{{'data-' + index}}">
+        <view class="data-item" wx:for="{{item.list}}" wx:key wx:for-item="goods" wx:for-index="idx"
+            bindtap="handleGoodsClick" data-key="{{index}}" data-index="{{idx}}" wx:if="{{tabInfo.currentTab == index}}">
+            <view class="image-wrap">
+                <image src="{{appPhotoPath ? appPhotoPath + goods.goodsUrl : ''}}" class="image" mode="aspectFill" lazy-load/>
+            </view>
+            <view class="content-wrap">
+                <view class="name">{{goods.goodsName}}</view>
+                <view class="desc">{{goods.subTitle}}</view>
+                <view class="price-info">
+                    <view class="text" wx:if="{{goods.discountPrice}}">
+                        <text class="text small">¥ </text>
+                        <text class="text">{{goods.discountPrice}}</text>
+                        <text class="text del">¥{{goods.costPrice}}</text>
+                    </view>
+                    <view class="text" wx:else>
+                        <text class="text small">¥ </text>
+                        <text class="text">{{goods.costPrice}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="page-bg">
+    <image class="image" src="{{appPhotoPath ? appPhotoPath + 'icon-8.png' : ''}}" mode="aspectFill"/>
+</view>
+
+<view class="goods-dialog {{goodsDetailDialog.show ? 'show' : ''}}">
+    <view class="bg {{goodsDetailDialog.show ? 'show' : ''}}" bindtap="closeGoodsDialog"></view>
+    <view class="content {{goodsDetailDialog.show ? 'show' : ''}}">
+        <view class="image-wrap">
+            <swiper style="height:670rpx;" indicator-dots="{{goodsSwipter.indicatorDots}}"
+                autoplay="{{goodsSwipter.autoplay}}" interval="{{goodsSwipter.interval}}" 
+                duration="{{goodsSwipter.duration}}" circular="{{goodsSwipter.circular}}">
+                <block wx:for="{{goodsDetailDialog.data.photoList}}" wx:key>
+                    <swiper-item>
+                        <view style="height:670rpx;font-size:0;">
+                            <image src="{{appPhotoPath ? appPhotoPath + item.photoUrl : ''}}" class="image" mode="aspectFit"/>
+                        </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <view class="name">{{goodsDetailDialog.data.goodsName}}</view>
+        <view class="desc">
+            <template is="wxParse" data="{{wxParseData: goodsHtml.nodes}}"/>
+        </view>
+        <view class="bottom-icon" bindtap="closeGoodsDialog">
+            <image src="{{appPhotoPath ? appPhotoPath + 'down-arrow.png' : ''}}" class="icon" mode="aspectFit"/>
+        </view>
+    </view>
+</view>

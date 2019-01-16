@@ -1,0 +1,11 @@
+<loading-component>
+    <view class="loading-wrap {{show ? 'show' : ''}}">
+        <view class="loading-bg {{show ? 'show' : ''}}"></view>
+        <view class="loading-content {{show ? 'show' : ''}}">
+            <view class="loading-image-wrap">
+                <image class="loading-image" src="{{appPhotoPath}}loading.gif" mode="aspectFill"/>
+            </view>
+            <view class="text">{{loadingText || '努力加载中...'}}</view>
+        </view>
+    </view>
+</loading-component>
