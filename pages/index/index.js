@@ -174,7 +174,6 @@ Page({
 		},
 	},
 	onLoad: function (obj) {
-		var that = this;
 		Auth.getUserInfo().then(res => {
 			if (res.errMsg && res.errMsg.indexOf('getUserInfo:fail') == 0 && res.errMsg.indexOf('scope unauthorized') >= 0) {
 				this.setData({
@@ -187,7 +186,6 @@ Page({
 
 		var phoneInfo = wx.getSystemInfoSync();
 		var phoneScale = phoneInfo.windowWidth / 750;
-		
 		this.setData({
 			appPhotoPath: app.globalData.appPhotoPath,
 			sWidth: phoneInfo.windowWidth,

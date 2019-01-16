@@ -1,4 +1,3 @@
-var extConfig = wx.getExtConfigSync() || {};
 
 App({
   	onLaunch: function () {
