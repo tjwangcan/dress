@@ -1,0 +1,90 @@
+.loading-wrap {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.loading-wrap.show {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.loading-wrap .loading-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: white;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.loading-wrap .loading-bg.show {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.loading-wrap .loading-content {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  width: 630rpx;
+  text-align: center;
+  transform: translate(-50%, 0) scale(0.4);
+  z-index: 19;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.loading-wrap .loading-content.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.loading-wrap .loading-content .loading-image-wrap {
+  font-size: 0;
+  width: 280rpx;
+  height: 100rpx;
+  margin: 0 auto;
+}
+
+.loading-wrap .loading-content .loading-image-wrap .loading-image {
+  width: 100%;
+  height: 100%;
+}
+
+.loading-wrap .loading-content .text {
+  width: 200rpx;
+  height: 36rpx;
+  margin: 0 auto;
+  line-height: 36rpx;
+  font-size: 30rpx;
+  color: #198b82;
+  overflow: hidden;
+}
+
+@keyframes stepFont {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

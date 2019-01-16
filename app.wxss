@@ -1,0 +1,64 @@
+@import "/utils/wxParse/wxParse.wxss";
+
+view {
+	box-sizing: border-box;
+}
+
+view {
+	box-sizing: border-box;
+	color: #1a1a1a;
+}
+
+scroll-view,
+input {
+	box-sizing: border-box;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.border-box {
+	box-sizing: border-box;
+}
+
+.font-size__base {
+	font-size: 26rpx;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.textover {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.flex-container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.inline-block.top {
+	vertical-align: top;
+}
+
+.inline-block.middle {
+	vertical-align: middle;
+}

@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/index/index"
+  ],
+  "window":{
+    "navigationBarTitleText": "九九自助建站",
+    "navigationStyle": "custom",
+    "navigationBarBackgroundColor": "#ffe959",
+    "navigationBarTextStyle": "white",
+    "backgroundColorTop": "#242424",
+    "backgroundColor": "#f5f5f9"
+  }
+}
